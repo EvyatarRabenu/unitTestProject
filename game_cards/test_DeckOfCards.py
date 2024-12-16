@@ -6,6 +6,7 @@ class TestDeckOfCards(TestCase):
     def setUp(self):
         self.deck_of_cards = DeckOfCards()
 
+# ============================================= Start of __init__ Tests ========================================
 
     def test_deck_cards_size(self):
         """Initial test that deck cards length is 52"""
@@ -31,6 +32,10 @@ class TestDeckOfCards(TestCase):
             for suit in range(1, 5):
                 self.assertIn(Card(value , suit) , self.deck_of_cards.deck_cards)
 
+# ======================================= End of __init__ Tests ======================================
+
+# ======================================= Start of card_shuffle() Test ================================
+
 
     def test_cards_shuffle(self):
         """A test that checks the functionality of shuffle.
@@ -41,6 +46,9 @@ class TestDeckOfCards(TestCase):
         deck_after_shuffle = self.deck_of_cards.deck_cards.copy() # Go through the list from beginning to end
         self.assertNotEqual(deck_before_shuffle[0] , deck_after_shuffle[0])
 
+# ====================================== End of card_shuffle() Tests ====================================
+
+# ====================================== Start of deal_one() Test =======================================
 
     def test_if_its_card_type(self):
         """Checking if the value returned from the method is of card type"""

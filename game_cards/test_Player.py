@@ -11,6 +11,8 @@ class TestPlayer(TestCase):
         self.player = Player("Moris" ,26)
         self.deck1 = DeckOfCards()
 
+# ============================================= Start of __init__ Tests ==========================================
+
     def test_init_is_valid(self):
         """Test simple valid case of init"""
         self.assertEqual("Moris" , self.player.player_name) # Name Test
@@ -81,6 +83,10 @@ class TestPlayer(TestCase):
         """Checking when creating a new deck is equal to 52 cards"""
         deck = DeckOfCards()
         self.assertEqual(len(deck.deck_cards) , 52)
+
+# ======================================== End of __init__ Tests =============================================
+
+# ======================================= Start of set_hand() Test ===========================================
 
     def test_valid_set_hand_middle_cards(self):
         """Checking when creating a deck of cards, when dealing a deck to a player that the number
@@ -173,8 +179,6 @@ class TestPlayer(TestCase):
             expected_cards = [Card(11, 1)] * 26  # Expected 26 cards of Card(11, 1)
             self.assertEqual(self.player.cards, expected_cards)
 
-
-
 # =========================== End of set_hand() Tests =========================
 
 # =========================== Start of get_card() Tests =======================
@@ -218,7 +222,6 @@ class TestPlayer(TestCase):
             self.player.set_hand(self.deck1)
             expected_cards = [Card(11, 1)] * 26 # 26 cards of (11,1)
             self.assertEqual(expected_cards, self.player.cards)
-
 
     # ============================== End of get_card() Tests ================================
 

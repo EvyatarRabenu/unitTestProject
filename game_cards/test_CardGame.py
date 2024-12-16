@@ -11,8 +11,10 @@ class TestCardGame(TestCase):
     def setUp(self):
         self.card_game = CardGame("Avi", "Moshe", 26)
 
+# ============================= Start of __init__ Tests ======================================================
+
     def test_init_is_valid(self):
-        """Test simple valid case of init , """
+        """Test simple valid case of init """
         self.assertEqual("Avi", self.card_game.player1.player_name) # Player1 Name Test
         self.assertEqual("Moshe", self.card_game.player2.player_name) # Player2 Name Test
         self.assertEqual(26, self.card_game.player1.number_of_cards) # Player1 Number of cards Test
@@ -116,8 +118,9 @@ class TestCardGame(TestCase):
         we Created the cardGame object"""
         self.assertFalse(self.card_game.you_can_game)
 
+# ====================================== End of __init__ Tests ========================================
 
-# ======================================== new_game Tests ========================================
+# ======================================== Start new_game Tests ========================================
 
 
     def test_new_game_not_in_init_method(self):
@@ -138,9 +141,9 @@ class TestCardGame(TestCase):
 
 
 
-# ===================================== And of new_game Test ======================================
+# ===================================== End of new_game Test ============================================
 
-# ===================================== get_winner_Tests ==========================================
+# ===================================== Start get_winner_Tests ==========================================
 
 
     def test_more_cards_to_player1_is_the_winner(self):
@@ -176,5 +179,3 @@ class TestCardGame(TestCase):
         self.card_game.player1.cards = [card1 , card2]
         self.card_game.player2.cards = [card3 , card4]
         self.assertIsNone(self.card_game.get_winner())
-
-# ========================================== And of game_winner() Tests ==============================================

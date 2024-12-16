@@ -23,12 +23,12 @@ class Card:
 
 
     def __gt__(self, other):
-        """ Comparison by value, and if equal - by symbol """
+        """ Comparison by value, and if equal - by suit """
         if not isinstance(other , Card):
             raise TypeError("Type Must Be Card!")
         if self.value != other.value: # if the value is not the same
             return self.value > other.value # the large value is greater
-        return self.suit > other.suit  # if its same - symbol its greater
+        return self.suit > other.suit  # if its same - suit its greater
 
 
     def __eq__(self, other):

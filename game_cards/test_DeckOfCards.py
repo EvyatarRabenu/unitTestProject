@@ -8,10 +8,13 @@ class TestDeckOfCards(TestCase):
 
 # ============================================= Start of __init__ Tests ========================================
 
+    def test_type_deck_of_cards(self):
+        """Test if the type of deck of cards is list"""
+        self.assertIsInstance(self.deck_of_cards.deck_cards , list)
+
     def test_deck_cards_size(self):
         """Initial test that deck cards length is 52"""
         self.assertEqual(len(self.deck_of_cards.deck_cards), 52)
-
 
     def test_card_values_range(self):
         """test that will verify that the values of the cards

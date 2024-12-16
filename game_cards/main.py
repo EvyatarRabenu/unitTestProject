@@ -30,7 +30,7 @@ for i in range(10):
         print(f"{player2_name} Won This Round!")
 
     else: # Tie - Should Never happen with 1 deck of cards because if values is the same - the suit will win.
-        print(f"No Cards for anyone.")
+        print(f"No Cards for {player1_name} or {player2_name}.")
 
 
 print(" ========== Game Over ===========")

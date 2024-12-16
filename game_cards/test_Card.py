@@ -82,68 +82,69 @@ class TestCard(TestCase):
 
  # ======================================= End Of __init__ Tests ======================================
 
-# ======================================== Start Of __eq__ Tests ======================================
+# ======================================== Start Of __gt__ Tests ======================================
 
-    def test_eq_valid_different_values_true(self):
+    def test_gt_valid_different_values_true(self):
         """Size check between 2 different values - returns True """
         card1 = Card(11 , 4)
         card2 = Card(12 , 1)
         self.assertTrue(card2 > card1)
 
-    def test_eq_valid_different_values_false(self):
+    def test_gt_valid_different_values_false(self):
         """Size check between 2 different values - returns False """
         card1 = Card(11 , 4)
         card2 = Card(12 , 1)
         self.assertFalse(card1 > card2)
 
-    def test_eq_valid_same_values_true(self):
+    def test_gt_valid_same_values_true(self):
         """Test size between 2 different suits - returns True for the higher suit"""
         card1 = Card(10 , 2)
         card2 = Card(10 , 3) # Highest suit win
         self.assertTrue(card2 > card1)
 
-    def test_eq_valid_same_values_false(self):
+
+    def test_gt_valid_same_values_false(self):
         """Test size between 2 different suits - returns False for the lowest suit"""
         card1 = Card(10 , 2)
         card2 = Card(10 , 3) # Highest suit win
         self.assertFalse(card1 > card2)
 
-    def test_end_of_valid_values(self):
+    def test_gt_end_of_valid_values(self):
         """Testing edge values for values between 2 different cards
          - returns True for the higher value"""
         card1 = Card(2 , 2)
         card2 = Card(14 , 3)
         self.assertTrue(card2 > card1)
 
-    def test_end_of_valid_values_false(self):
+    def test_gt_end_of_valid_values_false(self):
         """Testing edge values for values between 2 different cards
          - returns False for the lowest value"""
         card1 = Card(2 , 2)
         card2 = Card(14 , 3)
         self.assertFalse(card1 > card2)
 
-    def test_end_of_valid_suits_true(self):
+    def test_gt_end_of_valid_suits_true(self):
         """Testing edge values for suits between 2 different cards
          - returns True for the highest suit"""
         card1 = Card(8 , 1)
         card2 = Card(8 , 4)
         self.assertTrue(card2 > card1)
 
-    def test_end_of_valid_suits_false(self):
+    def test_gt_end_of_valid_suits_false(self):
         """Testing edge values for suits between 2 different cards
          - returns False for the lowest suit"""
         card1 = Card(8 , 1)
         card2 = Card(8 , 4)
         self.assertFalse(card1 > card2)
 
-    def test_same_values_and_suits_1(self):
+    def test_gt_same_values_and_suits_1(self):
         """Test similar card values for values and suits between 2 different cards
          - returns False when comparing size (when card1>card2) """
         card1 = Card(12 , 2)
         card2 = Card(12 , 2)
         self.assertFalse(card1 > card2)
 
-    def test_same_values_and_suits_2(self):
+    def test_gt_same_values_and_suits_2(self):
         """Test similar card values for values and suits between 2 different cards
          - returns False when comparing size (when card2>card1) """
         card1 = Card(12 , 2)
@@ -153,7 +154,7 @@ class TestCard(TestCase):
     def test_gt_invalid_other_type(self):
         """Test if the other parameter contains card values"""
         with self.assertRaises(TypeError):
-            card1 = Card(10,"123") #String , Must be Card
+            card1 = Card(10,"123") #String , Must be int
 
 # ============================= End Of __gt__ Tests =====================================================
 
@@ -165,7 +166,7 @@ class TestCard(TestCase):
             card1 = Card(11, ["a", "b", "c"])
 
 
-    def test_card_comparison_draw(self):
+    def test_eq_card_comparison_draw(self):
         """Test comparison between cards - draw situation"""
         card1 = Card(12, 3)
         card2 = Card(12, 3)
@@ -185,7 +186,6 @@ class TestCard(TestCase):
         card1 = Card(11, 3)
         card2 = Card(10, 3)
         self.assertFalse(card1 == card2)
-
 
     def test_eq_edge_cases(self):
         """Edge value check - comparison between a card with

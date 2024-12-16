@@ -129,11 +129,13 @@ class TestCardGame(TestCase):
             self.card_game.new_game()
 
     def test_mock_shuffle_called_only_once(self):
+        """A test with a mock that checks that the cards_shuffle() method is called only once"""
         with patch("DeckOfCards.DeckOfCards.cards_shuffle") as mock_shuffle:
             CardGame("Player1" , "Player2"  , 26)
             mock_shuffle.assert_called_once()
 
     def test_mock_set_hand_called_only_twice(self):
+        """A test with a mock that checks that the set_hand() method is only called twice"""
         with patch("Player.Player.set_hand") as mock_set_hand:
             CardGame("Player1" , "Player2"  , 26)
             self.assertEqual(mock_set_hand.call_count , 2)

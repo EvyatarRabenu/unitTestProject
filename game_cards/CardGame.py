@@ -26,13 +26,14 @@ class CardGame:
 
 
     def new_game(self):
+        """A method that will start a new game, shuffle the deck of cards and deal cards to player1 and player2"""
         if not self.you_can_game:
         #if self.you_can_game == False:
             raise RuntimeError ("New Game Only Activated only from __init__ Method")
 
         self.deck_cards_to_play.cards_shuffle() # shuffle the deck cards
-        self.player1.set_hand(self.deck_cards_to_play)
-        self.player2.set_hand(self.deck_cards_to_play)
+        self.player1.set_hand(self.deck_cards_to_play) # deal cards to player1
+        self.player2.set_hand(self.deck_cards_to_play) # deal cards to player2
 
     def get_winner(self):
         """A method that will return the player with the highest number of cards

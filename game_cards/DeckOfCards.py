@@ -10,19 +10,18 @@ class DeckOfCards:
                 self.deck_cards.append(Card(value,suit)) # create List (deck) of 52 Cards .
 
 
-
     def cards_shuffle(self):
-        """A method that shuffles the cards"""
+        """A method that shuffles the deck of cards"""
         random.shuffle(self.deck_cards)
 
 
     def deal_one(self):
-        """A method that draws, deletes and returns a one random card from the deck"""
+        """A method that draws, deletes and returns a one random card from the deck of cards"""
         if not self.deck_cards:
             # if len(self.cards) == 0
             raise ValueError("No Cards Left In The Deck!")
         index = random.randint(0 ,len(self.deck_cards) -1) # choose a random card from the list (deck)
-        removed_card = self.deck_cards.pop(index) # remove and deleting card from the deck
-        return removed_card
+        removed_card = self.deck_cards.pop(index) # remove the card from the original deck of cards
+        return removed_card # return the choose removed card
 
 

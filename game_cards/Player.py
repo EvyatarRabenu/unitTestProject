@@ -38,8 +38,8 @@ class Player:
          the card is drawn from the player's deck and not from the original deck"""
         if not self.cards: # if there is no cards in the deck (list)
             raise ValueError("No Cards Left In The Deck!")
-        index = random.randint(0 ,len(self.cards) -1)
-        removed_card =  self.cards.pop(index) # remove and deleting card from the player's deck
+        index = random.randint(0 ,len(self.cards) -1) # create a variable that catch the random card from the player's deck
+        removed_card =  self.cards.pop(index) # remove the card from the player's deck
         return removed_card
 
 

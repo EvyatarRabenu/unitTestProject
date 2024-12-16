@@ -14,7 +14,7 @@ class Card:
 
     def __repr__(self):
         """Presentation of the card"""
-        suits = {1: "Diamond", 2: "Spade", 3: "Heart", 4: "Club"}
+        suits = {1: "Diamond♦️", 2: "Spade♠️", 3: "Heart♥️", 4: "Club♣️"}
 
         values = {2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10",
                   11: "Jack", 12: "Queen", 13: "King", 14: "Ace"}

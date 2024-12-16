@@ -66,12 +66,6 @@ class TestDeckOfCards(TestCase):
         pull_one_card = deck.deal_one() # Pull one card from the deck
         self.assertNotIn(pull_one_card , deck.deck_cards)
 
-    # def test_all_cards_unique(self):
-    #     deck = DeckOfCards()
-    #     unique_cards = set(deck.deck_cards)
-    #     self.assertEqual(len(unique_cards) , 52)
-
-
 
     def test_pull_out_all_the_cards(self):
         """A test that draws all the cards, and then when try to pull out

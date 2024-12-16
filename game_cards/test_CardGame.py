@@ -144,12 +144,12 @@ class TestCardGame(TestCase):
 
 # ===================================== End of new_game Test ============================================
 
-# ===================================== Start get_winner_Tests ==========================================
+# ===================================== Start get_winner Tests ==========================================
 
 
     def test_more_cards_to_player1_is_the_winner(self):
         """A test that checks who wins the game. The winner is the one who has more
-            Cards at the end of the game in this case - player1 """
+            Cards at the end of the game. in this case - player1 """
         card1 = Card(9,4)
         card2 = Card(10,4)
         card3 = Card(11,4)
@@ -160,7 +160,7 @@ class TestCardGame(TestCase):
 
     def test_more_cards_to_player2_is_the_winner(self):
         """A test that checks who wins the game. The winner is the one who has more
-            Cards at the end of the game in this case - player2 """
+            Cards at the end of the game. in this case - player2 """
         card1 = Card(9,4)
         card2 = Card(10,4)
         card3 = Card(11,4)

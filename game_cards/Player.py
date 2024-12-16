@@ -26,8 +26,8 @@ class Player:
            use the deal_one() method from DeckOfCards class"""
         if not isinstance(deck_cards , DeckOfCards):
             raise TypeError("Must be DeckOfCards type!")
-        if len(deck_cards.deck_cards) < self.number_of_cards: # if there is no cards in the original deck (52)
-            raise ValueError (f"Not enough cards in the deck {self.number_of_cards} cards.")
+        if len(deck_cards.deck_cards) < self.number_of_cards: # if there is not enough cards in the original deck (52)
+            raise ValueError (f"Not enough cards in the deck cards.")
         for _ in range(self.number_of_cards): # goes over the number of cards the player has
             self.cards.append(deck_cards.deal_one()) # inserts random cards into the card list , as the number of cards
 
@@ -46,6 +46,6 @@ class Player:
         """A method that receives a card and adds it to the player's deck"""
         if not isinstance(card , Card):
             raise TypeError("Must be a Card type!")
-        self.cards.append(card) # Add card to the win player deck cards (list).
+        self.cards.append(card) # Add card to the player deck cards (list).
 
 

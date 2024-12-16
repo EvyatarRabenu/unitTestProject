@@ -16,7 +16,7 @@ class DeckOfCards:
 
 
     def deal_one(self):
-        """A method that draws, deletes and returns a one random card from the deck of cards"""
+        """A method that removes and returns one random card from the deck of cards"""
         if not self.deck_cards:
             # if len(self.cards) == 0
             raise ValueError("No Cards Left In The Deck!")

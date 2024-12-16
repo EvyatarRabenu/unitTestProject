@@ -217,7 +217,7 @@ class TestPlayer(TestCase):
         self.assertNotIn(remove_card , player.cards)
 
     def test_deal_card_set_hand_with_mock(self):
-        """Test if cards dealt are correctly assigned to player hand."""
+        """Test if the cards dealt to the player are the same as the cards in the return value we placed in the mock."""
         with patch("DeckOfCards.DeckOfCards.deal_one", return_value=Card(11, 1)) as mock_deal_one:
             self.player.set_hand(self.deck)
             expected_cards = [Card(11, 1)] * 26 # 26 cards of (11,1)

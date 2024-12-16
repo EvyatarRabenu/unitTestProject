@@ -17,11 +17,9 @@ class CardGame:
         self.deck_cards_to_play = DeckOfCards() # create a full deck cards (52 cards)
 
         self.you_can_game = True
-
         self.player1 = Player(player1_name , number_of_cards)
         self.player2 = Player(player2_name , number_of_cards)
         self.new_game()
-
         self.you_can_game = False
 
 

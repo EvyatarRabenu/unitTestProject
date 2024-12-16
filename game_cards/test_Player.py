@@ -9,7 +9,7 @@ from Player import *
 class TestPlayer(TestCase):
     def setUp(self):
         self.player = Player("Moris" ,26)
-        self.deck1 = DeckOfCards()
+        self.deck = DeckOfCards()
 
 # ============================================= Start of __init__ Tests ==========================================
 
@@ -22,7 +22,7 @@ class TestPlayer(TestCase):
     def test_valid_name_type(self):
         """Test valid player name"""
         player = Player("Avi" , 15)
-        self.assertEqual("Avi" , player.player_name)
+        self.assertEqual(player.player_name , "Avi")
 
     def test_valid_number_of_cards_type(self):
         """Test valid player - number of cards"""
@@ -175,7 +175,7 @@ class TestPlayer(TestCase):
     def test_deal_card_set_hand(self):
         """Test if cards dealt are correctly assigned to player hand."""
         with patch("DeckOfCards.DeckOfCards.deal_one", return_value=Card(11, 1)) as mock_deal_one:
-            self.player.set_hand(self.deck1)
+            self.player.set_hand(self.deck)
             expected_cards = [Card(11, 1)] * 26  # Expected 26 cards of Card(11, 1)
             self.assertEqual(self.player.cards, expected_cards)
 
@@ -207,8 +207,8 @@ class TestPlayer(TestCase):
         with self.assertRaises(ValueError):
             self.player.get_card()
 
-    def test_get_card_not_in_player_deck_after(self):
-        """Checking when a deck of cards is dealt to a player and one card is removed from him, that the same card
+    def test_get_card_not_in_player_deck_after_set_hand(self):
+        """Test when a deck of cards is dealt to a player and one card is removed from him, that the same card
         that was removed is not in the player's deck of cards"""
         player = Player("Kobi" , 26)
         deck = DeckOfCards()
@@ -219,16 +219,16 @@ class TestPlayer(TestCase):
     def test_deal_card_set_hand_with_mock(self):
         """Test if cards dealt are correctly assigned to player hand."""
         with patch("DeckOfCards.DeckOfCards.deal_one", return_value=Card(11, 1)) as mock_deal_one:
-            self.player.set_hand(self.deck1)
+            self.player.set_hand(self.deck)
             expected_cards = [Card(11, 1)] * 26 # 26 cards of (11,1)
             self.assertEqual(expected_cards, self.player.cards)
 
-    # ============================== End of get_card() Tests ================================
+    # ============================== End of get_card() Tests ==========================================
 
-    # ============================== Start of add_card() Tests ==============================
+    # ============================== Start of add_card() Tests ========================================
 
     def test_valid_type_value_add_card(self):
-        """A test where a card is inserted into
+        """Test where a card is inserted into
          the player's deck of cards that it actually enters"""
         player = Player("Oleg" , 10)
         new_card = Card(2,4)
@@ -251,7 +251,7 @@ class TestPlayer(TestCase):
         self.assertEqual(len(player.cards) , 1)
 
     def test_add_card_in_player_deck_to_cards_list(self):
-        """A test where a player is dealt a deck of cards and a new card is added to him,
+        """Test where a player is dealt a deck of cards and a new card is added to him,
          that the new card was inserted into the deck as expected"""
         player = Player("Amnon" , 26)
         new_card = Card(10,3)
@@ -260,7 +260,7 @@ class TestPlayer(TestCase):
         self.assertIn(new_card , player.cards)
 
     def test_add_card_deck_size_goes_up(self):
-        """A test where a player is dealt a deck of cards, and a new card is
+        """Test where a player is dealt a deck of cards, and a new card is
          added to the deck, the deck of cards is updated"""
         player = Player("Amnon" , 19)
         new_card = Card(10,3)

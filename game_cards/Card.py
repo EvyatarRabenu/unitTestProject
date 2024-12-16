@@ -1,6 +1,6 @@
 class Card:
     def __init__(self, value, suit):
-        """ method that initializes a card value and a card symbol """
+        """ method that initializes a card value and a suit """
         if value < 2 or value > 14:
             raise ValueError("Value Must Be Between 2 - 14")
         if not isinstance(value, int):

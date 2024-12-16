@@ -41,7 +41,7 @@ class TestDeckOfCards(TestCase):
 
 
     def test_cards_shuffle(self):
-        """A test that checks the functionality of shuffle.
+        """ Test that checks the functionality of shuffle.
             Create variables that save an original deck and a shuffled deck
             and compare their first cells that the decks were really shuffled"""
         deck_before_shuffle = self.deck_of_cards.deck_cards.copy() # Go through the list from beginning to end
@@ -54,14 +54,14 @@ class TestDeckOfCards(TestCase):
 # ====================================== Start of deal_one() Test =======================================
 
     def test_if_its_card_type(self):
-        """Checking if the value returned from the method is of card type"""
+        """Test if the value returned from the method is of card type"""
         deck = DeckOfCards()
         if_card = deck.deal_one()
         self.assertIsInstance(if_card , Card)
 
 
     def test_empty_deck_of_cards(self):
-        """A test that produces an empty deck of cards and makes
+        """Test that produces an empty deck of cards and makes
            a test that will throw a value error when trying to
            remove a card from the empty list"""
         deck = DeckOfCards() # Create a deck.
@@ -71,7 +71,7 @@ class TestDeckOfCards(TestCase):
 
 
     def test_removed_card_not_exist_in_deck(self):
-        """A test creates a deck of cards, removes one card
+        """Test creates a deck of cards, removes one card
          and checks that the card is not in the deck"""
         deck = DeckOfCards()
         pull_one_card = deck.deal_one() # Pull one card from the deck
@@ -79,7 +79,7 @@ class TestDeckOfCards(TestCase):
 
 
     def test_pull_out_all_the_cards(self):
-        """A test that draws all the cards, and then when try to pull out
+        """Test that draws all the cards, and then when try to pull out
            again from an empty deck it will throw an error"""
         deck = DeckOfCards()
         for _ in range(len(self.deck_of_cards.deck_cards)): # 52 Cards in Deck
@@ -88,7 +88,7 @@ class TestDeckOfCards(TestCase):
             deck.deal_one() # Trigger a value Error because the list is empty
 
     def test_deal_one_without_shuffled_deck(self):
-        """Checking if the deal_one() method works as expected."""
+        """Test if the deal_one() method works as expected."""
         deck = DeckOfCards()
         deck.deal_one()
         self.assertEqual(len(deck.deck_cards), 51)

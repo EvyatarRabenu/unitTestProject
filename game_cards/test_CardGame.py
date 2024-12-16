@@ -1,4 +1,6 @@
 from unittest import TestCase
+from unittest.mock import patch
+
 from Card import *
 from DeckOfCards import *
 from Player import *
@@ -123,6 +125,18 @@ class TestCardGame(TestCase):
         self.card_game.you_can_game = False
         with self.assertRaises(RuntimeError):
             self.card_game.new_game()
+
+    def test_mock_shuffle_called_only_once(self):
+        with patch("DeckOfCards.DeckOfCards.cards_shuffle") as mock_shuffle:
+            CardGame("Player1" , "Player2"  , 26)
+            mock_shuffle.assert_called_once()
+
+    def test_mock_set_hand_called_only_twice(self):
+        with patch("Player.Player.set_hand") as mock_set_hand:
+            CardGame("Player1" , "Player2"  , 26)
+            self.assertEqual(mock_set_hand.call_count , 2)
+
+
 
 # ===================================== And of new_game Test ======================================
 

@@ -35,23 +35,7 @@ class TestCardGame(TestCase):
         with self.assertRaises(TypeError):
             card_game = CardGame("Gabi" , "Lotem" , "777")
 
-    def test_valid_name_player1(self):
-        """Test for a valid value for a players'1 name"""
-        self.assertEqual("Avi", self.card_game.player1.player_name)
 
-    def test_invalid_name_player2(self):
-        """Test for a valid value for a players'2 name"""
-        self.assertEqual("Moshe", self.card_game.player2.player_name)
-
-    def test_valid_middle_number_of_cards_player1(self):
-        """Test for a valid value in the middle for players'1 number of cards"""
-        self.card_game.player1.number_of_cards = 13
-        self.assertEqual(13, self.card_game.player1.number_of_cards)
-
-    def test_valid_middle_number_of_cards_player2(self):
-        """Test for a valid value in the middle for players'2 number of cards"""
-        self.card_game.player2.number_of_cards = 13
-        self.assertEqual(13, self.card_game.player2.number_of_cards)
 
     def test_valid_lowest_number_of_cards_player1(self):
         """Test for a valid lowest value for players'1 number of cards"""

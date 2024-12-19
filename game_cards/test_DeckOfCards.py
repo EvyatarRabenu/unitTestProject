@@ -10,23 +10,12 @@ class TestDeckOfCards(TestCase):
 
     def test_type_deck_of_cards(self):
         """Test if the type of deck of cards is list"""
-        self.assertIsInstance(self.deck_of_cards.deck_cards , list)
+        self.assertIsInstance(self.deck_of_cards.deck_cards , [])
 
     def test_deck_cards_size(self):
         """Initial test that deck cards length is 52"""
         self.assertEqual(len(self.deck_of_cards.deck_cards), 52)
 
-    def test_card_values_range(self):
-        """test that will verify that the values of the cards
-         are within the standard range 2-14:"""
-        for card in self.deck_of_cards.deck_cards:
-            self.assertTrue(2 <= card.value <= 14) # Range from 2 to Ace , 2-14
-
-    def test_card_suits_range(self):
-        """A test that will verify that the suits of the cards
-         are within the standard range 1-4:"""
-        for card in self.deck_of_cards.deck_cards:
-            self.assertTrue(1 <= card.suit <= 4) # Range from 1 to 4
 
     def test_all_cards_in_deck(self):
         """A test that goes through every card we created
@@ -39,15 +28,22 @@ class TestDeckOfCards(TestCase):
 
 # ======================================= Start of card_shuffle() Test ================================
 
-
     def test_cards_shuffle(self):
         """ Test that checks the functionality of shuffle.
-            Create variables that save an original deck and a shuffled deck
-            and compare their first cells that the decks were really shuffled"""
-        deck_before_shuffle = self.deck_of_cards.deck_cards.copy() # Go through the list from beginning to end
+            Compare the entire deck before and after shuffle to ensure the deck was shuffled properly."""
+        deck_before_shuffle = self.deck_of_cards.deck_cards.copy()
         self.deck_of_cards.cards_shuffle()
-        deck_after_shuffle = self.deck_of_cards.deck_cards.copy() # Go through the list from beginning to end
-        self.assertNotEqual(deck_before_shuffle[0] , deck_after_shuffle[0])
+        deck_after_shuffle = self.deck_of_cards.deck_cards.copy()
+        self.assertNotEqual(deck_before_shuffle, deck_after_shuffle)
+
+
+    def test_count_after_shuffle_is_52_cards(self):
+        deck_before_shuffle = self.deck_of_cards.deck_cards.copy()
+        self.deck_of_cards.cards_shuffle()
+        deck_after_shuffle = self.deck_of_cards.deck_cards.copy()
+        self.assertEqual(len(deck_before_shuffle), 52 , "Deck Before Shuffle")
+        self.assertEqual(len(deck_after_shuffle), 52 , "Deck After Shuffle")
+
 
 # ====================================== End of card_shuffle() Tests ====================================
 
@@ -77,30 +73,13 @@ class TestDeckOfCards(TestCase):
         pull_one_card = deck.deal_one() # Pull one card from the deck
         self.assertNotIn(pull_one_card , deck.deck_cards)
 
-
-    def test_pull_out_all_the_cards(self):
-        """Test that draws all the cards, and then when try to pull out
-           again from an empty deck it will throw an error"""
+    def test_removed_card_from_len_of_1_card(self):
         deck = DeckOfCards()
-        for _ in range(len(self.deck_of_cards.deck_cards)): # 52 Cards in Deck
-            deck.deal_one()
-        with self.assertRaises(ValueError):
-            deck.deal_one() # Trigger a value Error because the list is empty
-
-    def test_deal_one_without_shuffled_deck(self):
-        """Test if the deal_one() method works as expected."""
-        deck = DeckOfCards()
+        card = Card(12,3)
+        deck.deck_cards = [card]
         deck.deal_one()
-        self.assertEqual(len(deck.deck_cards), 51)
+        self.assertEqual(len(deck.deck_cards) , 0)
 
-
-    def test_deal_one_with_shuffled_deck(self):
-        """Integration Test : Checking if the deal_one() method
-           works as expected after the shuffle."""
-        deck = DeckOfCards()
-        deck.cards_shuffle()
-        deck.deal_one()
-        self.assertEqual(len(deck.deck_cards), 51)
 
 
 

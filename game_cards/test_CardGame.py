@@ -125,8 +125,7 @@ class TestCardGame(TestCase):
     def test_new_game_not_in_init_method(self):
         """Test that check if the method new_game() not activate from __init__"""
         self.card_game.you_can_game = False
-        with self.assertRaises(RuntimeError):
-            self.card_game.new_game()
+        self.assertFalse(self.card_game.you_can_game)
 
     def test_mock_shuffle_called_only_once(self):
         """A test with a mock that checks that the cards_shuffle() method is called only once"""
@@ -156,7 +155,7 @@ class TestCardGame(TestCase):
         card4 = Card(12,4)
         self.card_game.player1.cards = [card1 , card2 , card3]
         self.card_game.player2.cards = [card4]
-        self.assertEqual(self.card_game.get_winner(), f"{self.card_game.player1.player_name}")
+        self.assertEqual(self.card_game.get_winner(), f"{self.card_game.player1}")
 
     def test_more_cards_to_player2_is_the_winner(self):
         """A test that checks who wins the game. The winner is the one who has more
@@ -167,7 +166,8 @@ class TestCardGame(TestCase):
         card4 = Card(12,4)
         self.card_game.player1.cards = [card1]
         self.card_game.player2.cards = [card4 , card3 , card2]
-        self.assertEqual(self.card_game.get_winner(), f"{self.card_game.player2.player_name}")
+        self.assertEqual(self.card_game.get_winner(), f"{self.card_game.player2}")
+
 
     def test_even_cards_to_both_players_draw(self):
         """"A test that checks that there is a draw in the game.

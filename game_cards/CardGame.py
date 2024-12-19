@@ -16,6 +16,8 @@ class CardGame:
             print("Number Of Cards Must Be Between 10-26")
         self.deck_cards_to_play = DeckOfCards() # create a full deck cards (52 cards)
 
+        # The variable you_can_game is a boolean variable that can only be
+        # called in the initialization function when creating the player objects
         self.you_can_game = True
         self.player1 = Player(player1_name , number_of_cards)
         self.player2 = Player(player2_name , number_of_cards)
@@ -26,8 +28,7 @@ class CardGame:
     def new_game(self):
         """A method that will start a new game, shuffle the deck of cards and deal cards to player1 and player2"""
         if not self.you_can_game:
-        #if self.you_can_game == False:
-            raise RuntimeError ("New Game Activated Only From __init__ Method")
+            return False
 
         self.deck_cards_to_play.cards_shuffle() # shuffle the deck cards
         self.player1.set_hand(self.deck_cards_to_play) # deal cards to player1
@@ -37,9 +38,9 @@ class CardGame:
         """A method that will return the player with the highest number of cards
          in the deck of cards, if the decks of cards are the same, None will be returned"""
         if len(self.player1.cards) > len(self.player2.cards):
-            return f"{self.player1.player_name}"
+            return f"{self.player1}"
         elif len(self.player2.cards) > len(self.player1.cards):
-            return f"{self.player2.player_name}"
+            return f"{self.player2}"
         else:
             return None
 

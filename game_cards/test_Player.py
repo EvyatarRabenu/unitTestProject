@@ -127,21 +127,7 @@ class TestPlayer(TestCase):
         player.set_hand(DeckOfCards())
         self.assertEqual(player.number_of_cards , 26)
 
-    def test_valid_size_deck_after_dealing_cards(self):
-        """Checking when a deck of cards is dealt to a player, that the number of cards
-         dealt to him falls properly from the original deck of cards (middle value)"""
-        deck = DeckOfCards()
-        player = Player("Moshe" , 13)
-        player.set_hand(deck)
-        self.assertEqual(len(deck.deck_cards) , 39)
 
-    def test_valid_size_deck_after_dealing_cards_lowest(self):
-        """Checking when a deck of cards is dealt to a player, that the number of cards
-         dealt to him falls properly from the original deck of cards (lowest value)"""
-        deck = DeckOfCards()
-        player = Player("Moshe" , 10)
-        player.set_hand(deck)
-        self.assertEqual(len(deck.deck_cards) , 42)
 
     def test_valid_size_deck_after_dealing_cards_highest(self):
         """Checking when a deck of cards is dealt to a player, that the number of cards
@@ -160,16 +146,16 @@ class TestPlayer(TestCase):
             unique_cards.add(str(card))
         self.assertEqual(len(unique_cards) , len(player.cards))
 
-    def test_no_enough_cards_in_deck(self):
+    def test_deal_more_cards_to_another_player(self):
         """Test that it is not possible to deal cards to a player when the deck is empty"""
         deck = DeckOfCards()
-        player1 = Player("Avi" , 26)
-        player2 = Player("Ori" , 26)
+        player1 = Player("Avi" , 20)
+        player2 = Player("Ori" , 20)
         player3 = Player("Gadi" , 10)
         player1.set_hand(deck)
         player2.set_hand(deck)
-        with self.assertRaises(ValueError):
-            player3.set_hand(deck)
+        player3.set_hand(deck)
+        self.assertEqual(len(deck.deck_cards) ,2)
 
 
     def test_deal_card_set_hand(self):

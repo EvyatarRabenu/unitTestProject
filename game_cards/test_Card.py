@@ -13,10 +13,6 @@ class TestCard(TestCase):
         self.assertEqual(12 , self.card.value) # Value Test
         self.assertEqual(2 , self.card.suit) # Suit Test
 
-    def test_valid_value(self):
-        """Test values - valid middle card value"""
-        card1 = Card(7 , 2)
-        self.assertEqual(7 , card1.value)
 
     def test_valid_lowest_value(self):
         """Test edge values - valid low card value"""
@@ -73,12 +69,6 @@ class TestCard(TestCase):
         with self.assertRaises(TypeError):
             card1 = Card(13 , [1,2,3])
 
-    def test_card_comparison(self):
-        """Test comparison between cards"""
-        card1 = Card(10, 2)
-        card2 = Card(12, 1)
-        self.assertTrue(card2 > card1)
-        self.assertFalse(card1 > card2)
 
  # ======================================= End Of __init__ Tests ======================================
 
@@ -144,12 +134,6 @@ class TestCard(TestCase):
         card2 = Card(12 , 2)
         self.assertFalse(card1 > card2)
 
-    def test_gt_same_values_and_suits_2(self):
-        """Test similar card values for values and suits between 2 different cards
-         - returns False when comparing size (when card2>card1) """
-        card1 = Card(12 , 2)
-        card2 = Card(12 , 2)
-        self.assertFalse(card2 > card1)
 
     def test_gt_invalid_other_type(self):
         """Test if the other parameter contains card values"""

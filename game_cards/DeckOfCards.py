@@ -17,9 +17,9 @@ class DeckOfCards:
 
     def deal_one(self):
         """A method that removes and returns one random card from the deck of cards"""
-        if not self.deck_cards:
-            # if len(self.cards) == 0
-            raise ValueError("No Cards Left In The Deck!")
+        if not self.deck_cards: # If The List Is Empty
+            print("The List (Deck Of Cards) Is Empty")
+            return None
         index = random.randint(0 ,len(self.deck_cards) -1) # choose a random card from the list (deck)
         removed_card = self.deck_cards.pop(index) # remove the card from the original deck of cards
         return removed_card # return the choose removed card

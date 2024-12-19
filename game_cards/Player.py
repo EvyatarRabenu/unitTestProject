@@ -17,7 +17,8 @@ class Player:
         self.number_of_cards = number_of_cards # number of cards the player's have
         self.cards = [] # list of card the player have
 
-
+    def __str__(self):
+        return f"{self.player_name} with {len(self.cards)} cards"
 
 
     def set_hand(self , deck_cards : DeckOfCards):
@@ -27,7 +28,7 @@ class Player:
         if not isinstance(deck_cards , DeckOfCards):
             raise TypeError("Must be DeckOfCards type!")
         if len(deck_cards.deck_cards) < self.number_of_cards: # if there is not enough cards in the original deck (52)
-            raise ValueError (f"Not enough cards in the deck cards.")
+            self.number_of_cards = len(deck_cards.deck_cards)
         for _ in range(self.number_of_cards): # goes over the number of cards the player has
             self.cards.append(deck_cards.deal_one()) # inserts random cards into the card list , as the number of cards
 
